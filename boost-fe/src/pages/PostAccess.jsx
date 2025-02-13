@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/common/Header";
-import GroupAccessModal from "../components/modal/GroupAccessModal";
+import PostAccessModal from "../components/modal/PostAccessModal";
 import * as G from "../components/group/AccessStyle";
 import * as S from "../components/group/styled";
 
-export default function GroupAccess() {
+export default function PostAccess() {
   const navigate = useNavigate();
-  const {groupId} = useParams();
+  const {postId} = useParams();
   const [inputPassword, setInputPassword] = useState("");
   const [isMatch, setIsMatch] = useState(null);
 
   // 비밀번호 일치 확인 함수
   const handleClick = async () => {
-    const response = fetch(`/groups/${groupId}/verify-password`,{
+    const response = fetch(`/posts/${postId}/verify-password`,{
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ password: inputPassword }),
@@ -23,7 +23,7 @@ export default function GroupAccess() {
     
     if(res.ok) {
       setIsMatch(true);
-      navigate(`/groups/${groupId}`); // 확인 성공, 비공개 그룹 페이지로 이동
+      navigate(`/posts/${postId}`); // 확인 성공, 비공개 추억 페이지로 이동
     }else{
       setIsMatch(false); // 비밀번호 확인 실패
     }
@@ -33,12 +33,12 @@ export default function GroupAccess() {
     <Header>
       <G.PageWrapper>
         <G.AccessContainer>
-          <G.Title>비공개 그룹</G.Title>
-          <G.Text>비공개 그룹에 접근하기 위한 권한 확인이 필요합니다</G.Text>
+          <G.Title>비공개 추억</G.Title>
+          <G.Text>비공개 추억에 접근하기 위한 권한 확인이 필요합니다</G.Text>
           <G.Label>비밀번호를 입력해 주세요</G.Label>
           <G.PasswordInput type="password" placeholder="비밀번호를 입력해 주세요." value={inputPassword} onChange={ e => setInputPassword(e.target.value)}/>
           <S.SubmitButton onClick={handleClick}>제출하기</S.SubmitButton>
-          {isMatch && <GroupAccessModal onClose={() => setIsMatch(false)}/>}
+          {isMatch && <PostAccessModal onClose={() => setIsMatch(false)}/>}
         </G.AccessContainer>
       </G.PageWrapper>
     </Header>
