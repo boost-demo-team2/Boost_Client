@@ -1,6 +1,12 @@
-import {styled} from styled-components;
+import styled from 'styled-components';
 
-export const GroupAccessContainer = styled.div`
+export const PageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`
+export const AccessContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
