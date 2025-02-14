@@ -14,12 +14,12 @@ export const HeadContainer = styled.div`
 `
 
 export const ButtonContainer = styled.div`
-    width : 100%;
+    //width : 100%;
     display : flex;
     justify-content: center;
     background-color : #ffffff;
     position: relative;
-    margin-top: 5px;
+    margin: 100px 160px;
 `
 
 export const logo = styled.img`
@@ -43,6 +43,7 @@ export const Button = styled.button`
     align-items: center;
     position: absolute; 
     right: 20px;
+    margin-right: 180px;
 `
 
 export const ToggleButton = styled.button`
@@ -72,6 +73,60 @@ export const Dropdown = styled.select`
     background-color: #FAFAFA;
     border: 1px solid #282828;
     border-radius: 6px;
-    margin-left: 10px;
+    margin-left: 20px;
     cursor: pointer;
-`
+`;
+
+export const SearchContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #fafafa;
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  width: 1155px;
+  max-width: 100%;
+`;
+
+export const SearchBar = styled.input`
+  width: 100%;
+  padding: 10px 10px 10px 30px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+`;
+
+export const Icon = styled.img`
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+`;
+
+export const MoreButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #282828;
+  background-color: #FAFAFA;
+  border: 1px solid #282828;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+
+  &:hover {
+    background-color: #F0F0F0;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+`;
