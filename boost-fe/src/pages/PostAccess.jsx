@@ -13,7 +13,7 @@ export default function PostAccess() {
 
   // 비밀번호 일치 확인 함수
   const handleClick = async () => {
-    const response = fetch(`/posts/${postId}/verify-password`,{
+    try { const response = await fetch(`/posts/${postId}/verify-password`,{
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ password: inputPassword }),
@@ -21,11 +21,14 @@ export default function PostAccess() {
     const result = await response.json();
     console.log(result);
     
-    if(res.ok) {
+    if(response.ok) {
       setIsMatch(true);
       navigate(`/posts/${postId}`); // 확인 성공, 비공개 추억 페이지로 이동
     }else{
       setIsMatch(false); // 비밀번호 확인 실패
+    }} catch (error) {
+      console.error("에러 발생 : ", error);
+      alert("에러가 발생했습니다. 다시 시도해 주세요.");
     }
   }
 

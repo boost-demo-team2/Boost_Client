@@ -1,5 +1,5 @@
 import * as S from "../group/styled"
-import * as G from "./AccessModalStyle"
+import * as G from "./styles/AccessModalStyle"
 
 export default function GroupAccessModal ({ onClose }) {
   return (
