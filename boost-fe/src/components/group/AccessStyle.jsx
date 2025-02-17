@@ -35,6 +35,6 @@ export const Label = styled.div`
 export const PasswordInput = styled.input`
   width: 100%;
   height: 45px;
-  border-radius: 6px 0px 0px 0px;
+  border-radius: 6px;
   border: 1px solid #DDDDDD;
 `

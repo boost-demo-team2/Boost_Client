@@ -10,7 +10,7 @@ export const ModalOverlay = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-`;
+`
 export const ModalContainer = styled.div`
   background: white;
   padding: 20px;
@@ -18,7 +18,8 @@ export const ModalContainer = styled.div`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   width: 480px;
-`;
+  height: 298px;
+`
 export const Message = styled.div`
   font-size: 24px;
   font-weight: 700;
