@@ -1,5 +1,6 @@
 import {styled} from "styled-components";
 
+// Header
 export const HeadContainer = styled.div`
     width: 100%;
     height: 80px;
@@ -12,21 +13,11 @@ export const HeadContainer = styled.div`
     z-index: 1000;
     padding-bottom: 10px;
 `
-
-export const ButtonContainer = styled.div`
-    //width : 100%;
-    display : flex;
-    justify-content: center;
-    background-color : #ffffff;
-    position: relative;
-    margin: 100px 160px;
-`
-
 export const logo = styled.img`
     width: 137px;
     height: 48px;
     top: 26px;
-    Left:910px;
+    left: 50%;
     transform: translateX(-50%);
 `
 export const Button = styled.button`
@@ -46,6 +37,18 @@ export const Button = styled.button`
     margin-right: 180px;
 `
 
+// Search
+export const ButtonContainer = styled.div`
+    display : flex;
+    justify-content: center;
+    background-color : #ffffff;
+    position: absolute;
+    margin: 100px 180px;
+    top: 80px;
+    left: 0px;
+    z-index: 10;
+`;
+
 export const ToggleButton = styled.button`
     width: auto;
     display: inline-block;
@@ -61,7 +64,7 @@ export const ToggleButton = styled.button`
     &:hover {
         background-color: #3a3a3a;
         color: white;
-  }
+    }
 `
 
 export const Dropdown = styled.select`
@@ -78,55 +81,58 @@ export const Dropdown = styled.select`
 `;
 
 export const SearchContainer = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  background-color: #fafafa;
-  border-radius: 6px;
-  padding: 5px 10px;
-  margin-left: 10px;
-  width: 1155px;
-  max-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+    border-radius: 6px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    width: 1153px;
+    max-width: 100%;
 `;
 
 export const SearchBar = styled.input`
-  width: 100%;
-  padding: 10px 10px 10px 30px;
-  font-size: 14px;
-  border: none;
-  outline: none;
-  background-color: transparent;
+    width: 100%;
+    padding: 10px 10px 10px 30px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: transparent;
 `;
 
 export const Icon = styled.img`
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
 `;
 
+// Button
 export const MoreButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #282828;
-  background-color: #FAFAFA;
-  border: 1px solid #282828;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #282828;
+    background-color: #FFFFFF;
+    border: 1px solid #282828;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 1460px;
+    height: 50px;
 
-  &:hover {
-    background-color: #F0F0F0;
-  }
+    &:hover {
+        background-color: #FAFAFA;
+    }
 
-  &:active {
-    transform: scale(0.95);
-  }
+    &:active {
+        transform: scale(0.95);
+    }
 `;
