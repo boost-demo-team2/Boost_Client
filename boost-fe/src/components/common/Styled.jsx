@@ -16,6 +16,7 @@ export const HeadContainer = styled.div`
 export const logo = styled.img`
     width: 137px;
     height: 48px;
+    position: fixed;
     top: 26px;
     left: 50%;
     transform: translateX(-50%);
@@ -135,4 +136,22 @@ export const MoreButton = styled.button`
     &:active {
         transform: scale(0.95);
     }
+`;
+
+// 404
+export const Notfound = styled.img`
+  display: block;
+  width: 60%;
+  max-width: 450px;
+  margin: 40px auto;
+  object-fit: cover;
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
 `;
