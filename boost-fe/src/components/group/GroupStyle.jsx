@@ -16,8 +16,8 @@ export const EmptyState = styled.div`
   justify-content: center;
   text-align: center;
   width: 100%;
-  height: 100vh; /* 뷰포트 높이 전체 사용 */
-  position: absolute; /* 부모 기준 중앙 정렬 */
+  height: 100vh;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -45,8 +45,8 @@ export const SubMessage = styled.p`
 `;
 
 export const CreateButton = styled.button`
-  width: 400px;           /* 너비 400px */
-  height: 50px;           /* 높이 50px */
+  width: 400px;
+  height: 50px;
   font-size: 16px;
   background-color: #282828;
   color: #fafafa;

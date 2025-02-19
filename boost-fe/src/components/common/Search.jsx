@@ -2,15 +2,19 @@ import React, { useState, useEffect } from "react";
 import search from "../../assets/search.svg";
 import * as S from "./Styled";
 
-const Search = ({ setIsPublic, isPublic }) => {
+const Search = ({ setIsPublic, isPublic, setSortOrder }) => {
   const [keyword, setKeyword] = useState("");
-
+  
   const handleKeywordChange = (e) => setKeyword(e.target.value);
 
   const handleKeyword = (e) => {
     if (e.key === "Enter") {
       console.log("검색어:", keyword);
     }
+  };
+
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value); // 정렬 기준 전달
   };
 
   return (
@@ -32,10 +36,10 @@ const Search = ({ setIsPublic, isPublic }) => {
         <S.Icon src={search} alt="검색" />
       </S.SearchContainer>
 
-      <S.Dropdown>
-        <option>최신순</option>
-        <option>댓글순</option>
-        <option>공감순</option>
+      <S.Dropdown onChange={handleSortChange}>
+        <option value="latest">최신순</option>
+        <option value="comments">댓글순</option>
+        <option value="likes">공감순</option>
       </S.Dropdown>
     </S.ButtonContainer>
   );

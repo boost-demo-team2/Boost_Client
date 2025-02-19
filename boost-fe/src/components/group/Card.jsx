@@ -21,7 +21,7 @@ const Card = ({ groupData }) => {
 
       <C.CardContent>
         <C.MetaInfo>
-          <C.Date>D+{groupData.days}</C.Date>
+          <C.Date>D+{groupData.daysAgo}</C.Date>
           <C.Bar />
           {/* 공개 그룹 여부 표시 */}
           <C.Privacy>{groupData.isPublic ? "공개" : "비공개"}</C.Privacy>
@@ -36,9 +36,9 @@ const Card = ({ groupData }) => {
 
         <C.Stats>
           {/* 공개 그룹에서만 배지 표시 */}
-          {groupData.isPublic && groupData.badges > 0 && (
+          {groupData.isPublic && (
             <C.StatItem>
-              획득 배지 <strong>{groupData.badges}</strong>
+              획득 배지 <strong>{groupData.badges >= 0 ? groupData.badges : "0"}</strong>
             </C.StatItem>
           )}
 
