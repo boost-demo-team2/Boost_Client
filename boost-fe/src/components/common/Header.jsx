@@ -12,4 +12,5 @@ const Header=()=>{
     )
 
 }
+export {logo};
 export default Header;
