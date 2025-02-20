@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import * as S from "../group/styled";
 import * as G from "./styles/GroupEditModalStyle";
+import exitIcon from "../../assets/exitIcon.svg"
 
 export default function GroupEditModal () {
   const [modalOpen, setModalOpen] = useState(true);
@@ -59,6 +60,7 @@ export default function GroupEditModal () {
     { modalOpen && (
       <G.ModalOverlay>
         <G.ModalContainer>
+          <G.ModalCloseButton src={exitIcon} onClick={()=>setModalOpen(false)}></G.ModalCloseButton>
           <G.MainTitle>그룹 정보 수정</G.MainTitle>
           <G.Title>그룹명</G.Title>
           <G.GroupTitleText value={name} onChange={(e) => setName(e.target.value)}></G.GroupTitleText>

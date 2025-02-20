@@ -18,16 +18,30 @@ export const ModalOverlay = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-
 `
 export const ModalContainer = styled.div`
   box-sizing: border-box;
-  width: 480px;
-  height: 840px;
-  padding: 40px;
+  width: 1120px;
+  height: 794px;
+  padding: 80px;
   border-radius: 6px;
   opacity: 0px;
   background: #FAFAFA;
+`
+export const FlexBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 160px;
+`
+export const ModalCloseButton = styled.img`
+      display: position;
+      position: absolute;
+      width:30px;
+      height:30px;
+      top:20px;
+      right:20px;
 `
 export const Title = styled.div`
 font-size: 16px;
@@ -75,9 +89,11 @@ export const GroupContentText = styled.input`
   margin-bottom: 40px;
   padding-left: 10px;
 `
-export const ToggleContainer = styled.div``
+export const ToggleContainer = styled.div`
+margin-bottom: 40px;`
 export const ToggleLabel = styled.label``
 export const ToggleSwitch = styled.input``
+
 export const PasswordInput = styled.input`
   width: 400px;
   height: 45px;
@@ -88,25 +104,43 @@ export const PasswordInput = styled.input`
   margin-bottom: 40px;
 `
 export const SubmitButton = styled.button`
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    background-color: #282828;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
+  width: 400px;
+  margin: 0 275px;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #282828;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
 
-    &:hover {
-        background-color: #333;
-    }
+  &:hover {
+    background-color: #333;
+  }
 ` 
-const ModalOffButton = styled.img`
-      display: position;
-      position: absolute;
-      width:30px;
-      height:30px;
-      top:20px;
-      right:20px;
+export const TagContainer = styled.div`
+margin-bottom: 40px;
+`
+export const TagInput = styled.input`
+width: 400px;
+height: 45px;
+border-radius: 6px;
+border-width: 1px;
+background: #FAFAFA;
+border: 1px solid #DDDDDD;
+`
+export const TagItem = styled.div`
+gap: 5px;
+`
+export const TagSpan = styled.span`
+font-weight: 400;
+font-size: 14px;
+line-height: 17.53px;
+letter-spacing: -3%;
+background: #8D8D8D;
+`
+export const TagImg = styled.img`
+width: 16px;
+height: 16px;
 `
