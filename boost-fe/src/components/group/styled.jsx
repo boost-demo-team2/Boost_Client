@@ -21,7 +21,7 @@ export const SubmitButton = styled.button`
     width: 100%;
     padding: 12px;
     font-size: 16px;
-    background-color: black;
+    background-color: #282828;
     color: white;
     border: none;
     border-radius: 6px;

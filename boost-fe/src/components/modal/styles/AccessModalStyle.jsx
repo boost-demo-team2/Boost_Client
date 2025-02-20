@@ -19,6 +19,7 @@ export const ModalContainer = styled.div`
   text-align: center;
   width: 480px;
   height: 298px;
+  background: #FAFAFA;
 `
 export const Message = styled.div`
   font-size: 24px;
