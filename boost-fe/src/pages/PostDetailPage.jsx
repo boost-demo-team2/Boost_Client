@@ -1,44 +1,102 @@
+// import React, { useState, useEffect } from "react";
+// import { useParams } from "react-router-dom";
+// import * as S from "../components/group/PostDetailStyle";
+// import BasicHeader from "../components/common/BasicHeader";
+
+// const PostDetailPage = () => {
+//   const { postId } = useParams(); // URL에서 postId 가져오기
+//   const [postData, setPostData] = useState(null); // 게시글 데이터
+//   const [loading, setLoading] = useState(true); // 로딩 상태
+//   const [error, setError] = useState(null); // 에러 상태
+
+//   // ✅ 게시글 상세 정보 불러오기
+//   useEffect(() => {
+//     const fetchPost = async () => {
+//       try {
+//         const response = await fetch(`/api/posts/${postId}`);
+//         if (!response.ok) throw new Error("게시글을 불러오는 데 실패했습니다.");
+//         const data = await response.json();
+//         setPostData(data);
+//       } catch (err) {
+//         setError(err.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchPost();
+//   }, [postId]);
+
+//   if (loading) return <p>게시글을 불러오는 중...</p>;
+//   if (error) return <p style={{ color: "red" }}>{error}</p>;
+
+//   return (
+//     <S.Container>
+//       {postData && (
+//         <>
+//         <BasicHeader/>
+//         <S.Nickname>{postData.nickname}</S.Nickname>
+//         <S.IsPublic>{postData.isPublic ? "공개" : "비공개"}</S.IsPublic>
+//         <S.PostEdit>추억 수정하기</S.PostEdit>
+//         <S.PostDelete>추억 삭제하기</S.PostDelete>
+//           <S.Title>{postData.title}</S.Title>
+//           <S.MetaInfo>
+//             <span>{postData.location} · {new Date(postData.createdAt).toLocaleString()}</span>
+//             <span>❤️ {postData.likeCount} · 💬 {postData.commentCount}</span>
+//           </S.MetaInfo>
+//           <S.LikeButton>공감 보내기</S.LikeButton>
+//           <S.PostImage>
+//             {postData.imageUrl && <S.Image src={postData.imageUrl} alt="게시글 이미지" />}
+//           </S.PostImage>
+//           <S.Content>{postData.content}</S.Content>
+          
+//           {/* ✅ 댓글 등록 버튼 */}
+//           <S.CommentButton onClick={() => console.log("댓글 등록 버튼 클릭됨")}>
+//             댓글 등록하기
+//           </S.CommentButton>
+//         </>
+//       )}
+//     </S.Container>
+//   );
+// };
+
+// export default PostDetailPage;
+
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import * as S from "../styles/PostDetailStyle";
+import * as S from "../components/group/PostDetailStyle";
 import BasicHeader from "../components/common/BasicHeader";
 
 const PostDetailPage = () => {
   const { postId } = useParams(); // URL에서 postId 가져오기
   const [postData, setPostData] = useState(null); // 게시글 데이터
-  const [loading, setLoading] = useState(true); // 로딩 상태
-  const [error, setError] = useState(null); // 에러 상태
 
-  // ✅ 게시글 상세 정보 불러오기
   useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await fetch(`/api/posts/${postId}`);
-        if (!response.ok) throw new Error("게시글을 불러오는 데 실패했습니다.");
-        const data = await response.json();
-        setPostData(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
+    // ✅ Mock Data 사용
+    const mockPost = {
+      nickname: "조각집",
+      isPublic: true,
+      title: "인천 앞바다에서 무려 60cm 월척을 낚다!",
+      location: "인천 앞바다",
+      createdAt: "2024-01-19T18:00:00Z",
+      likeCount: 120,
+      commentCount: 8,
+      imageUrl: "https://example.com/fish.jpg",
+      content:
+        "인천 앞바다에서 월척을 낚았습니다! 가족들과 같이 오랜만에 낚시를 했는데, 정말 멋진 하루였어요!",
     };
-
-    fetchPost();
+    setPostData(mockPost);
   }, [postId]);
-
-  if (loading) return <p>게시글을 불러오는 중...</p>;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
     <S.Container>
       {postData && (
         <>
-        <BasicHeader/>
-        <S.Nickname>{postData.nickname}</S.Nickname>
-        <S.IsPublic>{postData.isPublic ? "공개" : "비공개"}</S.IsPublic>
-        <S.PostEdit>추억 수정하기</S.PostEdit>
-        <S.PostDelete>추억 삭제하기</S.PostDelete>
+          <BasicHeader />
+          <S.Nickname>{postData.nickname}</S.Nickname>
+          <S.IsPublic>{postData.isPublic ? "공개" : "비공개"}</S.IsPublic>
+          <S.PostEdit>추억 수정하기</S.PostEdit>
+          <S.PostDelete>추억 삭제하기</S.PostDelete>
           <S.Title>{postData.title}</S.Title>
           <S.MetaInfo>
             <span>{postData.location} · {new Date(postData.createdAt).toLocaleString()}</span>
