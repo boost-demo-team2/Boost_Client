@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as G from "./styles/PostEditModalStyle";
-import exitIcon from "../../assets/exitIcon.svg";
 
-export default function PostEditModal () {
-  const [modalOpen, setModalOpen] = useState(true); //부모 페이지에서 다룸
-
+export default function MakePost () {
+  const navigate = useNavigate();
   const [nickname, setNickname] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -21,6 +19,8 @@ export default function PostEditModal () {
     if(e.key != "Enter") return; //엔터키 아닐 경우 바로 리턴
     const value = e.target.value;
     if(!value.trim()) return; //입력값이 없을 경우 바로 리턴
+    if (tags.includes(value)) return; // 중복 태그 방지
+
     setTags([...tags, value]);
     e.target.value = "";
   }
@@ -35,16 +35,13 @@ export default function PostEditModal () {
     formData.append("image", file);
 
     try{
-      const response = await fetch("",{
+      const response = await fetch("/api/image",{
         method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data"
-        },
-        body: formData,
+        body: formData, // 자동으로 Content Type 설정
       });
       const imgData = await response.json();
       if (!response.ok) throw new Error(imgData.message || "이미지 업로드 실패");
-      setImageUrl(data.imageUrl);
+      setImageUrl(imgData.imageUrl);
 
     } catch(error){
       console.log("이미지 업로드 실패 :", error);
@@ -67,7 +64,7 @@ export default function PostEditModal () {
     }
 
     try {
-      const response = await fetch("", {
+      const response = await fetch(`/api/groups/${groupId}/posts`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -78,11 +75,10 @@ export default function PostEditModal () {
       console.log(data);  
 
       if (!response.ok) {
-        setModalOpen(false);
         alert(`${data.message}`);
+        navigate(-1);
       }else{
         console.log("업데이트 완료:", data);
-        setModalOpen(false);
         setNickname("");
         setTitle("");
         setContent("");
@@ -90,22 +86,19 @@ export default function PostEditModal () {
         setImageUrl("");
         setTags([]);
         setLocation("");
-        setMoment("");
+        setMoment(null);
         setIsPublic(true);
-        alert("게시글이 수정되었습니다.");
+        alert("추억 올리기가 완료되었습니다.");
+        navigate(-1);
         
       }
     } catch (error) {
       console.error("오류 발생:", error);
-      setModalOpen(false);
     }
   };
   
   return (
     <>
-      <G.ModalOverlay>
-        <G.ModalContainer>
-          <G.ModalCloseButton src={exitIcon} onClick={()=>setModalOpen(false)}></G.ModalCloseButton>
           <G.MainTitle>추억 수정</G.MainTitle>
           <G.FlexBox>
           <div>
@@ -143,7 +136,7 @@ export default function PostEditModal () {
             <G.Title>장소</G.Title>
             <G.GroupTitleText value={location} onChange={(e) => setLocation(e.target.value)} />
             <G.Title>추억의 순간</G.Title>
-            <G.GroupTitleText type="date" value={moment} onChange={(e) => setMoment(e.target.value)} />
+            <G.GroupTitleText type="date" value={moment ? moment : ""} onChange={(e) => setMoment(e.target.value)} />
             <G.Title>추억 공개 선택</G.Title>
             <G.ToggleLabel>공개</G.ToggleLabel>
             <G.ToggleSwitch type="checkbox" checked={isPublic} onChange={() => setIsPublic(!isPublic)} />
@@ -152,8 +145,6 @@ export default function PostEditModal () {
           </div>
           </G.FlexBox>
           <G.SubmitButton onClick={handleSubmit}>수정하기</G.SubmitButton>
-        </G.ModalContainer>
-      </G.ModalOverlay>
   </>
   )
 }
