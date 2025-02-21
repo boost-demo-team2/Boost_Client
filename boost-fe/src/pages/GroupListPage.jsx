@@ -108,7 +108,7 @@ const GroupListPage = () => {
         "가장 먼저 그룹을 만들어보세요!"
       </G.SubMessage>
       <G.CreateButton>
-        "그룹 만들기"
+        그룹 만들기
       </G.CreateButton>
     </G.EmptyState>
   );
