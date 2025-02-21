@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Header from "../components/common/Header";
 import PostAccessModal from "../components/modal/PostAccessModal";
 import * as G from "../components/group/AccessStyle";
 import * as S from "../components/group/styled";
+import BasicHeader from "../components/common/BasicHeader";
 
 export default function PostAccess() {
   const navigate = useNavigate();
@@ -32,7 +32,8 @@ export default function PostAccess() {
   }
 
   return (
-    <Header>
+    <>
+    <BasicHeader/>
       <G.PageWrapper>
         <G.AccessContainer>
           <G.Title>비공개 추억</G.Title>
@@ -43,6 +44,6 @@ export default function PostAccess() {
           {isMatch && <PostAccessModal onClose={() => setIsMatch(false)}/>}
         </G.AccessContainer>
       </G.PageWrapper>
-    </Header>
+    </>
   )
 }

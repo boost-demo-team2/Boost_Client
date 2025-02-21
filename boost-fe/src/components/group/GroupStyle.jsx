@@ -8,6 +8,9 @@ export const Container = styled.div`
   margin: 200px;
 `;
 
+export const CardWrapper = styled.div`
+`;
+
 // 데이터 X
 export const EmptyState = styled.div`
   display: flex;

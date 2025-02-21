@@ -45,7 +45,11 @@ export default function CommentDeleteModal () {
           <G.ModalCloseButton src={exitIcon} onClick={()=>setModalOpen(false)}></G.ModalCloseButton>
           <G.Message>댓글 삭제</G.Message>
           <G.Text>삭제 권한 인증</G.Text>
-          <G.PasswordInput type="password" placeholder="비밀번호를 입력해 주세요." value={inputPassword} onChange={ e => setInputPassword(e.target.value)}/>
+          <G.PasswordInput 
+            type="password" 
+            placeholder="비밀번호를 입력해 주세요." 
+            value={inputPassword} 
+            onChange={ e => setInputPassword(e.target.value)}/>
           <S.SubmitButton onClick={handleClick} >삭제하기</S.SubmitButton>
         </G.ModalContainer>
       </G.ModalOverlay>

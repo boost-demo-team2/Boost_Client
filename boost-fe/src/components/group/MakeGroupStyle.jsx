@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+`
+export const Container = styled.div`
+`
 export const MainTitle = styled.div`
   font-size: 24px;
   font-weight: 700;
@@ -60,9 +69,12 @@ export const ToggleLabel = styled.label`
   line-height: 17.53px;
   letter-spacing: -3%;
 `
-export const ToggleSwitch = styled.input``
+export const ToggleSwitch = styled.input`
+margin-bottom: 40px;
+`
 
 export const PasswordInput = styled.input`
+  box-sizing: border-box;
   width: 400px;
   height: 45px;
   border-radius: 6px;
@@ -70,9 +82,10 @@ export const PasswordInput = styled.input`
   background: #FAFAFA;
   border: 1px solid #DDDDDD;
   margin-bottom: 40px;
+  padding-left:
 `
 export const SubmitButton = styled.button`
-    width: 100%;
+    width: 400px;
     padding: 12px;
     font-size: 16px;
     background-color: #282828;

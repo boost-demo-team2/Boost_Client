@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import * as G from "./styles/PostEditModalStyle";
+import * as G from "../components/modal/PostEditModal";
 
 export default function MakePost () {
   const navigate = useNavigate();
@@ -11,9 +11,9 @@ export default function MakePost () {
   const [imageUrl, setImageUrl] = useState("");
   const [tags,setTags] = useState([]);
   const [location, setLocation] = useState("");
-  const [moment, setMoment] = useState(null);
+  const [moment, setMoment] = useState("");
   const [isPublic, setIsPublic] = useState(true);
-  const {postId} = useParams();
+  //const {postId} = useParams();
 
   const handleKeyDown = (e) => {
     if(e.key != "Enter") return; //엔터키 아닐 경우 바로 리턴
@@ -31,7 +31,9 @@ export default function MakePost () {
     const file = e.target.files[0];
     if(!file) return;
 
-    const formData = new FormData();
+    setImageUrl(file.name);
+
+    /*const formData = new FormData();
     formData.append("image", file);
 
     try{
@@ -46,12 +48,39 @@ export default function MakePost () {
     } catch(error){
       console.log("이미지 업로드 실패 :", error);
       alert("이미지 업로드에 실패했습니다.");
-    }
+    }*/
   } 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
+
+    console.log("게시물 데이터:", {
+      nickname,
+      title,
+      content,
+      postPassword,
+      imageUrl,
+      tags,
+      location,
+      moment,
+      isPublic,
+    });
+  
+    console.log("게시물 데이터:", formData);
+    alert("게시물이 생성되었습니다. (백엔드 없이 실행)");
+  
+    // 입력 필드 초기화
+    setNickname("");
+    setTitle("");
+    setContent("");
+    setPostPassword("");
+    setImageUrl("");
+    setTags([]);
+    setLocation("");
+    setMoment("");
+    setIsPublic(true);
+  };
     
-    const formData = {
+    /*const formData = {
       nickname,
       title,
       content,
@@ -64,7 +93,7 @@ export default function MakePost () {
     }
 
     try {
-      const response = await fetch(`/api/groups/${groupId}/posts`, {
+      const response = await fetch(`/api/groups/${postId}/posts`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -94,8 +123,7 @@ export default function MakePost () {
       }
     } catch (error) {
       console.error("오류 발생:", error);
-    }
-  };
+    }*/
   
   return (
     <>

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Header from "../components/common/Header";
 import GroupAccessModal from "../components/modal/GroupAccessModal";
 import * as G from "../components/group/AccessStyle";
 import * as S from "../components/group/styled";
+import BasicHeader from "../components/common/BasicHeader";
 
 export default function GroupAccess() {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export default function GroupAccess() {
 
   // 비밀번호 일치 확인 함수
   const handleClick = async () => {
-    try { const response = await fetch(`/groups/${groupId}/verify-password`,{
+    /*try { const response = await fetch(`/groups/${groupId}/verify-password`,{
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ password: inputPassword }),
@@ -28,11 +28,12 @@ export default function GroupAccess() {
     }} catch (error) {
       console.error("에러 발생 : ", error);
       alert("에러가 발생했습니다. 다시 시도해 주세요.");
-    }
+    }*/
   }
 
   return (
-    <Header>
+    <>
+    <BasicHeader />
       <G.PageWrapper>
         <G.AccessContainer>
           <G.Title>비공개 그룹</G.Title>
@@ -43,6 +44,6 @@ export default function GroupAccess() {
           {isMatch && <GroupAccessModal onClose={() => setIsMatch(false)}/>}
         </G.AccessContainer>
       </G.PageWrapper>
-    </Header>
+    </>
   )
 }
