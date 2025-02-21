@@ -27,6 +27,9 @@ export default function MakeGroup() {
 
       const response = await fetch(`${API_URL}/api/image`, {
         method: "POST",
+        headers: {
+          "Accept": "application/json",
+        },
         body: formData, // ✅ FormData 사용 시, Content-Type은 자동 설정됨
       });
 
@@ -71,7 +74,7 @@ export default function MakeGroup() {
       if (!response.ok) throw new Error(data.message || "그룹 생성 실패");
 
       alert("그룹이 생성되었습니다.");
-      navigate(-1);
+      navigate("/");
     } catch (error) {
       console.error("오류 발생:", error);
       alert("서버 오류로 인해 그룹을 생성할 수 없습니다.");
