@@ -4,7 +4,7 @@ import * as S from "./Styled";
 
 const Search = ({ setIsPublic, isPublic, setSortOrder }) => {
   const [keyword, setKeyword] = useState("");
-  
+
   const handleKeywordChange = (e) => setKeyword(e.target.value);
 
   const handleKeyword = (e) => {
@@ -19,10 +19,10 @@ const Search = ({ setIsPublic, isPublic, setSortOrder }) => {
 
   return (
     <S.ButtonContainer>
-      <S.ToggleButton active={isPublic} onClick={() => setIsPublic(true)}>
+      <S.ToggleButton $active={isPublic} onClick={() => setIsPublic(true)}>
         공개
       </S.ToggleButton>
-      <S.ToggleButton active={!isPublic} onClick={() => setIsPublic(false)}>
+      <S.ToggleButton $active={!isPublic} onClick={() => setIsPublic(false)}>
         비공개
       </S.ToggleButton>
 
