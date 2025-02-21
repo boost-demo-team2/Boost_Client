@@ -5,7 +5,6 @@ import * as G from "./styles/DeleteModalStyle"
 import exitIcon from "../../assets/exitIcon.svg"
 
 export default function GroupDeleteModal () {
-  const [modalOpen, setModalOpen] = useState(true);
   const [inputPassword,setInputPassword] = useState("");
   const {groupId} = useParams();
 
@@ -34,7 +33,6 @@ export default function GroupDeleteModal () {
 
   return (
     <>
-    {modalOpen && (
       <G.ModalOverlay>
         <G.ModalContainer>
           <G.ModalCloseButton src={exitIcon} onClick={()=>setModalOpen(false)}></G.ModalCloseButton>
@@ -44,7 +42,6 @@ export default function GroupDeleteModal () {
           <S.SubmitButton onClick={handleClick} >삭제하기</S.SubmitButton>
         </G.ModalContainer>
       </G.ModalOverlay>
-    )}
   </>
   );
 }

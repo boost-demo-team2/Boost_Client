@@ -75,9 +75,17 @@ export const GroupContentText = styled.input`
   margin-bottom: 40px;
   padding-left: 10px;
 `
-export const ToggleContainer = styled.div``
-export const ToggleLabel = styled.label``
+export const ToggleContainer = styled.div`
+  margin-bottom: 40px;
+`
+export const ToggleLabel = styled.label`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17.53px;
+  letter-spacing: -3%;
+`
 export const ToggleSwitch = styled.input``
+
 export const PasswordInput = styled.input`
   width: 400px;
   height: 45px;
@@ -85,7 +93,7 @@ export const PasswordInput = styled.input`
   opacity: 0px;
   background: #FAFAFA;
   border: 1px solid #DDDDDD;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 `
 export const SubmitButton = styled.button`
     width: 100%;
@@ -102,7 +110,7 @@ export const SubmitButton = styled.button`
         background-color: #333;
     }
 ` 
-const ModalOffButton = styled.img`
+export const ModalCloseButton = styled.img`
       display: position;
       position: absolute;
       width:30px;

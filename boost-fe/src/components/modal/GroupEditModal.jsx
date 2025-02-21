@@ -5,7 +5,6 @@ import * as G from "./styles/GroupEditModalStyle";
 import exitIcon from "../../assets/exitIcon.svg"
 
 export default function GroupEditModal () {
-  const [modalOpen, setModalOpen] = useState(true);
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [isPublic, setIsPublic] = useState(true);
@@ -23,9 +22,6 @@ export default function GroupEditModal () {
     try{
       const response = await fetch("",{
         method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data"
-        },
         body: formData,
       });
       const imgData = await response.json();
@@ -44,20 +40,19 @@ export default function GroupEditModal () {
     try {
       const response = await fetch("", {
         method: "PUT",
-        body: {
+        body: JSON.stringify({
           name,
           password,
           imageUrl,
           isPublic,
           introduction,
-        },
+        }),
       });
       const data = await response.json();
       console.log(data);  
 
       if (!response.ok) {
         alert(`${data.message}`);
-        setModalOpen(false);
 
       }else{
         console.log("업데이트 완료:", data);
@@ -71,7 +66,6 @@ export default function GroupEditModal () {
       }
     } catch (error) {
       console.error("오류 발생:", error);
-      setModalOpen(false);
     }
   };
   
