@@ -32,7 +32,6 @@
 //     </div>
 //   );
 // }
-
 import React, { useState, useEffect } from "react";
 import Header from "../components/common/Header";
 import Search from "../components/common/Search";
@@ -44,8 +43,8 @@ import { useNavigate } from "react-router-dom";
 
 const GroupListPage = () => {
   const navigate = useNavigate();
-  const [isPublic, setIsPublic] = useState(true); // 공개 상태
-  const [groups, setGroups] = useState([]); // 서버에서 가져온 그룹 데이터 저장
+  const [isPublic, setIsPublic] = useState(true);  // 공개 상태
+  const [groups, setGroups] = useState([]);  // 서버에서 가져온 그룹 데이터 저장
   const [page, setPage] = useState(1); // 현재 페이지
   const [sortOrder, setSortOrder] = useState("latest");
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태
@@ -54,15 +53,11 @@ const GroupListPage = () => {
   const fetchGroups = async (reset = false) => {
     setIsLoading(true);
     try {
-      const response = await fetch(
-        `/api/groups?page=${reset ? 1 : page}&pageSize=10`
-      );
+      const response = await fetch(`/api/groups?page=${reset ? 1 : page}&pageSize=10`);
       const data = await response.json();
 
       if (response.ok) {
-        setGroups((prevGroups) =>
-          reset ? data.groups : [...prevGroups, ...data.groups]
-        );
+        setGroups((prevGroups) => reset ? data.groups : [...prevGroups, ...data.groups]);
         if (reset) setPage(2); // 새로운 데이터 로드 시 페이지 초기화
         else setPage((prevPage) => prevPage + 1);
       } else {
@@ -76,13 +71,13 @@ const GroupListPage = () => {
   };
 
   // 🔹 공개 그룹 & 비공개 그룹 필터링
-  const filteredGroups = groups.filter((group) => group.isPublic === isPublic);
+  const filteredGroups = groups.filter(group => group.isPublic === isPublic);
 
   // 🔹 날짜 계산
   const calculateDaysAgo = (createdAt) => {
     const createdDate = new Date(createdAt);
     const currentDate = new Date();
-    const timeDifference = currentDate - createdDate;
+    const timeDifference = currentDate - createdDate; 
     return Math.floor(timeDifference / (1000 * 60 * 60 * 24));
   };
 
@@ -107,15 +102,13 @@ const GroupListPage = () => {
     <G.EmptyState>
       <G.Icon src={emptyImg} alt="No Groups" />
       <G.Message>
-        {isPublic ? "등록된 공개 그룹이 없습니다." : "게시된 추억이 없습니다."}
+        {isPublic ? "등록된 공개 그룹이 없습니다." : "등록된 비공개 그룹이 없습니다."}
       </G.Message>
       <G.SubMessage>
-        {isPublic
-          ? "가장 먼저 그룹을 만들어보세요!"
-          : "첫 번째 추억을 올려보세요!"}
+        "가장 먼저 그룹을 만들어보세요!"
       </G.SubMessage>
       <G.CreateButton>
-        {isPublic ? "그룹 만들기" : "추억 만들기"}
+        그룹 만들기
       </G.CreateButton>
     </G.EmptyState>
   );
@@ -125,21 +118,15 @@ const GroupListPage = () => {
       <Header />
 
       {/* 🔹 검색 & 필터 */}
-      <Search
-        setIsPublic={setIsPublic}
-        isPublic={isPublic}
-        setSortOrder={setSortOrder}
-      />
+      <Search setIsPublic={setIsPublic} isPublic={isPublic} setSortOrder={setSortOrder} />
 
       {/* 🔹 그룹 목록 */}
-      {sortedGroups.length === 0 ? (
-        renderEmptyState()
-      ) : (
+      {sortedGroups.length === 0 ? renderEmptyState() : (
         <G.GroupList>
           {sortedGroups.map((group) => {
             const daysAgo = calculateDaysAgo(group.createdAt);
             return (
-              <G.CardWrapper
+              <G.CardWrapper 
                 key={group.id}
                 onClick={() => {
                   if (!group.isPublic) {
@@ -147,11 +134,11 @@ const GroupListPage = () => {
                   }
                 }}
               >
-                <Card
-                  groupData={{
-                    ...group,
-                    daysAgo,
-                    badges: group.badges,
+                <Card 
+                  groupData={{ 
+                    ...group, 
+                    daysAgo, 
+                    badges: group.badges
                   }}
                 />
               </G.CardWrapper>
@@ -162,7 +149,9 @@ const GroupListPage = () => {
 
       {/* 🔹 더보기 버튼 */}
       {!isLoading && groups.length > 0 && (
-        <MoreButton onClick={() => fetchGroups()}>더보기</MoreButton>
+        <MoreButton onClick={() => fetchGroups()}>
+          더보기
+        </MoreButton>
       )}
     </G.Container>
   );
