@@ -9,7 +9,7 @@ export default function PostAccess() {
   const navigate = useNavigate();
   const {postId} = useParams();
   const [inputPassword, setInputPassword] = useState("");
-  const [isMatch, setIsMatch] = useState(null);
+  const [isMatch, setIsMatch] = useState(false);
 
   // 비밀번호 일치 확인 함수
   const handleClick = async () => {
@@ -22,10 +22,9 @@ export default function PostAccess() {
     console.log(result);
     
     if(response.ok) {
-      setIsMatch(true);
       navigate(`/posts/${postId}`); // 확인 성공, 비공개 추억 페이지로 이동
     }else{
-      setIsMatch(false); // 비밀번호 확인 실패
+      setIsMatch(true); // 비밀번호 확인 실패, 모달 띄우기 
     }} catch (error) {
       console.error("에러 발생 : ", error);
       alert("에러가 발생했습니다. 다시 시도해 주세요.");

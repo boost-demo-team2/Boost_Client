@@ -36,9 +36,6 @@ export default function CommentEditModal () {
 
       if (!response.ok) {
         alert(`${data.message}`);
-        setNickname("");
-        setContent("");
-        setPassword(""); // 상태 초기화
         setModalOpen(false);
       }else{
         console.log("수정 완료:", data);
@@ -50,9 +47,6 @@ export default function CommentEditModal () {
       }
     } catch (error) {
       console.error("오류 발생:", error);
-      setNickname("");
-      setContent("");
-      setPassword("");
       setModalOpen(false);
     }
   };

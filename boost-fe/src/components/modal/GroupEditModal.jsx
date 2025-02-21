@@ -13,51 +13,70 @@ export default function GroupEditModal () {
   const [password,setPassword] = useState("");
   const {groupId} = useParams();
 
-  const handleImg = (e) => {
+  const handleImg = async (e) => { // 이미지 업로드 요청 함수
     const file = e.target.files[0];
-    if (file) {
-      try { const reader = new FileReader();
-        reader.readAsDataURL(file); // 이미지 url 변환
-        reader.onloadend = () => {
-        setImageUrl(reader.result);
-      }
-      } catch (error) {
-        console.log("이미지 불러오기 실패.");
-      }
-    }
-  }
-  const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    if(!file) return;
 
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("password", password);
-    formData.append("imageUrl", imageUrl);
-    formData.append("isPublic", isPublic);
-    formData.append("introduction", introduction);
+    formData.append("image", file);
+
+    try{
+      const response = await fetch("",{
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data"
+        },
+        body: formData,
+      });
+      const imgData = await response.json();
+      if (!response.ok) throw new Error(imgData.message || "이미지 업로드 실패");
+      setImageUrl(data.imageUrl);
+
+    } catch(error){
+      console.log("이미지 업로드 실패 :", error);
+      alert("이미지 업로드에 실패했습니다.");
+    }
+  } 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
   
     try {
       const response = await fetch("", {
         method: "PUT",
-        body: formData,
+        body: {
+          name,
+          password,
+          imageUrl,
+          isPublic,
+          introduction,
+        },
       });
       const data = await response.json();
       console.log(data);  
+
       if (!response.ok) {
         alert(`${data.message}`);
+        setModalOpen(false);
+
       }else{
         console.log("업데이트 완료:", data);
         alert("그룹이 수정되었습니다.");
+        setName("");
+        setPassword("");
+        setImageUrl("");
+        setIsPublic("");
+        setIntroduction("");
         setModalOpen(false);
       }
     } catch (error) {
       console.error("오류 발생:", error);
+      setModalOpen(false);
     }
   };
   
   return (
     <>
-    { modalOpen && (
       <G.ModalOverlay>
         <G.ModalContainer>
           <G.ModalCloseButton src={exitIcon} onClick={()=>setModalOpen(false)}></G.ModalCloseButton>
@@ -88,7 +107,6 @@ export default function GroupEditModal () {
           <S.SubmitButton onClick={handleSubmit}>수정하기</S.SubmitButton>
         </G.ModalContainer>
       </G.ModalOverlay>
-    )}
   </>
   )
 }
