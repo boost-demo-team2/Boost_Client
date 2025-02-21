@@ -7,6 +7,7 @@ import Detailpage  from './pages/Detailpage';
 import Notfound from './pages/Notfound.jsx';
 import PostAccess from './pages/PostAccess.jsx';
 import MakePost from './pages/MakePost.jsx';
+import PostDetailPage from './pages/PostDetailPage.jsx';
 
 const router = createBrowserRouter([
   { path: "/", element: <GroupListPage/>},

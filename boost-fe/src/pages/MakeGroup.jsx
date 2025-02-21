@@ -21,7 +21,7 @@ export default function MakeGroup () {
     formData.append("image", file);
 
     try{
-      const response = await fetch("/api/image",{
+      const response = await fetch("http://localhost:3000/api/image",{
         method: "POST",
         body: formData,
       });
@@ -39,7 +39,7 @@ export default function MakeGroup () {
     e.preventDefault(); 
   
     try {
-      const response = await fetch("/api/groups", {
+      const response = await fetch("http://localhost:3000/api/groups", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export default function MakeGroup () {
       console.error("오류 발생:", error);
     }
 
-      /*console.log("그룹 생성 데이터:", {
+      console.log("그룹 생성 데이터:", {
         name,
         password,
         imageUrl,
@@ -87,7 +87,7 @@ export default function MakeGroup () {
       setPassword("");
       setImageUrl("");
       setIsPublic(true);
-      setIntroduction("");*/
+      setIntroduction("");
   };
   
   
@@ -132,3 +132,90 @@ export default function MakeGroup () {
   </>
   )
 }
+
+// import { useState } from "react";
+// import { useNavigate, useParams } from "react-router-dom";
+// import * as S from "../components/group/styled";
+// import * as G from "../components/group/MakeGroupStyle";
+// import BasicHeader from "../components/common/BasicHeader";
+
+// export default function MakeGroup() {
+//   const navigate = useNavigate();
+//   const [name, setName] = useState("");
+//   const [imageUrl, setImageUrl] = useState("");
+//   const [isPublic, setIsPublic] = useState(true);
+//   const [introduction, setIntroduction] = useState("");
+//   const [password, setPassword] = useState("");
+//   const { groupId } = useParams();
+
+//   // ✅ 이미지 업로드 핸들러
+//   const handleImg = async (e) => {
+//     const file = e.target.files[0];
+//     if (!file) return;
+
+//     console.log("선택된 파일:", file);
+//     // 실제 이미지 업로드 로직을 추가하려면 여기서 FormData를 활용하여 API 요청을 보낼 수 있음
+//     setImageUrl(URL.createObjectURL(file)); // 임시로 이미지 URL 생성
+//   };
+
+//   // ✅ 그룹 생성 핸들러 (백엔드 없이 실행)
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     console.log("그룹 생성 데이터:", {
+//       name,
+//       password,
+//       imageUrl,
+//       isPublic,
+//       introduction,
+//     });
+
+//     alert("그룹이 생성되었습니다. (백엔드 없이 실행)");
+
+//     // 입력 필드 초기화
+//     setName("");
+//     setPassword("");
+//     setImageUrl("");
+//     setIsPublic(true);
+//     setIntroduction("");
+//   };
+
+//   return (
+//     <>
+//       <G.PageWrapper>
+//         <BasicHeader />
+//         <G.Container>
+//           <G.MainTitle>그룹 만들기</G.MainTitle>
+//           <div>
+//             <G.Title>그룹명</G.Title>
+//             <G.GroupTitleText value={name} onChange={(e) => setName(e.target.value)} />
+//           </div>
+//           <div>
+//             <G.Title>대표 이미지</G.Title>
+//             <G.ImgInput type="text" value={imageUrl} placeholder="이미지를 업로드하세요" readOnly />
+//             <input type="file" id="fileUpload" style={{ display: "none" }} onChange={handleImg} />
+//             <G.ImgLabel htmlFor="fileUpload">파일 선택</G.ImgLabel>
+//           </div>
+//           <div>
+//             <G.Title>그룹 소개</G.Title>
+//             <G.GroupContentText value={introduction} onChange={(e) => setIntroduction(e.target.value)} />
+//           </div>
+//           <div>
+//             <G.Title>그룹 공개 선택</G.Title>
+//             <G.ToggleLabel>공개</G.ToggleLabel>
+//             <G.ToggleSwitch type="checkbox" checked={isPublic} onChange={() => setIsPublic(!isPublic)} />
+//           </div>
+//           <div>
+//             <G.Title>비밀번호</G.Title>
+//             <G.PasswordInput
+//               value={password}
+//               placeholder="비밀번호를 입력해 주세요."
+//               onChange={(e) => setPassword(e.target.value)}
+//             />
+//           </div>
+//           <S.SubmitButton onClick={handleSubmit}>만들기</S.SubmitButton>
+//         </G.Container>
+//       </G.PageWrapper>
+//     </>
+//   );
+// }
