@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import PostAccessModal from "../components/modal/PostAccessModal";
-import * as G from "../components/group/AccessStyle";
-import * as S from "../components/group/styled";
-import BasicHeader from "../components/common/BasicHeader";
+import PostAccessModal from "../../components/modal/PostAccessModal";
+import * as G from "../../components/group/styles/AccessStyle";
+import * as S from "../../components/group/styles/styled";
+import BasicHeader from "../../components/common/BasicHeader";
 
 export default function PostAccess() {
   const navigate = useNavigate();

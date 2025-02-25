@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import * as C from "./CardStyle";
+import * as C from "./styles/CardStyle";
 import flowerIcon from "../../assets/flower.svg";
 import defaultImg from "../../assets/img1.png";
 
