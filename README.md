@@ -25,6 +25,6 @@
 
 
 ## Members
-| [![텍스트](https://avatars.githubusercontent.com/u/156151246?v=4)](https://github.com/hyunw-kang) | [![텍스트](https://avatars.githubusercontent.com/u/175480557?v=4)](https://github.com/inyouxg) | [![텍스트](https://avatars.githubusercontent.com/u/155604441?v=4)](https://github.com/eunhseong) |
-|:---:|:---:|:---:|
-| 강현우 | 김인영 | 성은희 |
+| [![텍스트](https://avatars.githubusercontent.com/u/175480557?v=4)](https://github.com/inyouxg) | [![텍스트](https://avatars.githubusercontent.com/u/155604441?v=4)](https://github.com/eunhseong) |
+|:---:|:---:|
+| 김인영 | 성은희 |
