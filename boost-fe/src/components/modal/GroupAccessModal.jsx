@@ -1,4 +1,4 @@
-import * as S from "../group/styled"
+import * as S from "../group/styles/styled"
 import * as G from "./styles/AccessModalStyle"
 
 export default function GroupAccessModal ({ onClose }) {

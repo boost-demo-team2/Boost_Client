@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import GroupAccessModal from "../../components/modal/GroupAccessModal";
 import BasicHeader from "../../components/common/BasicHeader";
-import * as G from "../../components/group/AccessStyle";
-import * as S from "../../components/group/styled";
+import * as G from "../../components/group/styles/AccessStyle";
+import * as S from "../../components/group/styles/styled";
 
 export default function GroupAccess() {
   const navigate = useNavigate();

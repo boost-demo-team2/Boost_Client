@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import search from "../../assets/search.svg";
 import * as S from "./Styled";
 
-const Search = ({ setIsPublic, isPublic, setSortOrder }) => {
-  const [keyword, setKeyword] = useState("");
+const Search = ({ setIsPublic, isPublic, setSortOrder, onSearch, keyword }) => {
 
-  const handleKeywordChange = (e) => setKeyword(e.target.value);
+  const handleKeywordChange = (e) => {
+    onSearch(e.target.value);
+  };
 
   const handleKeyword = (e) => {
     if (e.key === "Enter") {

@@ -1,13 +1,13 @@
 import React from 'react';
 import { createBrowserRouter,Navigate } from 'react-router-dom';
-import GroupListPage from './pages/GroupListPage.jsx';
-import MakeGroup from './pages/MakeGroup.jsx';
-import GroupAccess from './pages/GroupAccess.jsx';
-import Detailpage  from './pages/Detailpage';
-import Notfound from './pages/Notfound.jsx';
-import PostAccess from './pages/PostAccess.jsx';
-import MakePost from './pages/MakePost.jsx';
-import PostDetailPage from './pages/PostDetailPage.jsx';
+import GroupListPage from "./pages/group/GroupListPage";
+import MakeGroup from './pages/group/MakeGroup';
+import GroupAccess from './pages/group/GroupAccess';
+// import Detailpage  from './pages/Detailpage';
+// import Notfound from './pages/Notfound.jsx';
+// import PostAccess from './pages/PostAccess.jsx';
+// import MakePost from './pages/MakePost.jsx';
+// import PostDetailPage from './pages/PostDetailPage.jsx';
 
 const router = createBrowserRouter([
   { path: "/", element: <GroupListPage/>},
