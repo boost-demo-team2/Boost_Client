@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 // Card 관련 스타일
 export const Card = styled.div`
-  //width: 100%;
+  width: 100%;
   max-width: 340px;
   background: #fafafa;
   border-radius: 12px;

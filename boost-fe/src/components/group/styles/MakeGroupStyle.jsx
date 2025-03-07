@@ -6,8 +6,12 @@ export const PageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  max-width: 100vw;
 `
 export const Container = styled.div`
+  width: auto;
+  max-width: 400px;  /* 최대 너비 제한 */
+  box-sizing: border-box;  /* ✅ 크기 문제 해결 */
 `
 export const MainTitle = styled.div`
   font-size: 24px;
@@ -27,7 +31,8 @@ padding-bottom: 10px;
 `
 export const GroupTitleText = styled.input`
   box-sizing: border-box;
-  width: 400px;
+  width:100%;
+  max-width: 400px;
   height: 45px;
   border-radius: 6px;
   background: #FAFAFA;
@@ -49,6 +54,8 @@ export const ImgInput = styled.input`
 
 ` 
 export const ImgLabel = styled.label`
+  width: 100px;
+  height: 45px;
   padding: 13px 17px;
   border-radius: 6px;
   border: 1px solid #282828

@@ -3,7 +3,8 @@ import {styled} from "styled-components";
 // Header
 export const HeadContainer = styled.div`
     width: 100%;
-    height: 80px;
+    height: 100px;
+    background: #FAFAFA;
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -11,7 +12,6 @@ export const HeadContainer = styled.div`
     top: 0;
     left: 0;
     z-index: 1000;
-    padding-bottom: 10px;
 `
 export const logo = styled.img`
     width: 137px;
@@ -30,10 +30,8 @@ export const Button = styled.button`
     color: white;
     border-radius: 6px;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute; 
+    top: 27px;
     right: 20px;
     margin-right: 180px;
 `
@@ -43,31 +41,24 @@ export const ButtonContainer = styled.div`
     display : flex;
     justify-content: center;
     background-color : #ffffff;
-    position: absolute;
-    margin: 100px 180px;
     top: 80px;
     left: 0px;
     z-index: 10;
 `;
 
 export const ToggleButton = styled.button`
-    width: auto;
+    width: 70px;
+    min-width: 70px; // 버튼 크기 안 줄어들도록 고정.
     display: inline-block;
     height: 45px;
     font-size: 14px;
-    background-color: ${(props) => (props.active ? "#1f1f1f" : "#e0e0e0")};
-    color: ${(props) => (props.active ? "white" : "black")};
+    background-color: ${(props) => (props.$active ? "#3a3a3a" : "#e0e0e0")};
+    color: ${(props) => (props.$active ? "white" : "black")};
     border: none;
     border-radius: 20px;
     margin-right: 10px;
     cursor: pointer;
-
-    &:hover {
-        background-color: #3a3a3a;
-        color: white;
-    }
 `
-
 export const Dropdown = styled.select`
     height: 45px;
     width : 160px;
@@ -85,16 +76,18 @@ export const SearchContainer = styled.div`
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 1153px;
+    min-width: 600px;
     background-color: #fafafa;
     border-radius: 6px;
     padding: 5px 10px;
     margin-left: 10px;
-    width: 1153px;
-    max-width: 100%;
 `;
 
 export const SearchBar = styled.input`
     width: 100%;
+    max-width: 100%;
     padding: 10px 10px 10px 30px;
     font-size: 14px;
     border: none;
