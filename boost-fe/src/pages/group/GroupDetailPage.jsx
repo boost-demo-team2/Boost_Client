@@ -7,98 +7,56 @@ import * as G from "../../components/group/styles/GroupStyle";
 import emptyImg from "../../assets/empty.svg";
 import MoreButton from "../../components/common/Button";
 
-const group = [
+const groupDetail =
   {
-      id: 1,
-      name: "그룹1",
-      description: "그룹1 설명",
-      imageUrl: "",
-      createdAt: "2024-02-22T07:47:49.803Z",
-      isPublic: true,
-      badges: 3,
-      memories: 10,
-      likes: 50,
-  },
+    "id": 1,
+    "name": "string",
+    "imageUrl": "string",
+    "isPublic": true,
+    "likeCount": 0,
+    "badges": ["badge1", "badge2"],
+    "postCount": 0,
+    "createdAt": "2024-02-22T07:47:49.803Z",
+    "introduction": "string"
+  } // 클릭한 그룹의 id가 1 일 때, 해당 id의 데이터만 API로 불러온다.
+
+const post = [
   {
-      id: 2,
-      name: "그룹2",
-      description: "그룹2 설명",
-      imageUrl: "",
-      createdAt: "2023-02-22T07:47:49.803Z",
-      isPublic: true,
-      badges: 3,
-      memories: 10,
-      likes: 50,
-  },
-  {
-      id: 3,
-      name: "그룹3",
-      description: "그룹3 설명",
-      imageUrl: "",
-      createdAt: "2022-02-22T07:47:49.803Z",
-      isPublic: true,
-      badges: 3,
-      memories: 10,
-      likes: 50,
-  },
-  {
-      id: 4,
-      name: "그룹4",
-      description: "그룹4 설명",
-      imageUrl: "",
-      createdAt: "2024-03-22T07:47:49.803Z",
-      isPublic: false,
-      badges: 3,
-      memories: 10,
-      likes: 50,
-  },
-  {
-    id: 5,
-    name: "그룹1",
-    description: "그룹1 설명",
-    imageUrl: "",
-    createdAt: "2024-04-22T07:47:49.803Z",
-    isPublic: true,
-    badges: 3,
-    memories: 10,
-    likes: 50,
-  },
-  {
-      id: 6,
-      name: "그룹1",
-      description: "그룹1 설명",
-      imageUrl: "",
-      createdAt: "2024-06-22T07:47:49.803Z",
-      isPublic: true,
-      badges: 3,
-      memories: 10,
-      likes: 50,
-  },
-  {
-      id: 7,
-      name: "그룹1",
-      description: "그룹1 설명",
-      imageUrl: "",
-      createdAt: "2024-07-22T07:47:49.803Z",
-      isPublic: true,
-      badges: 3,
-      memories: 10,
-      likes: 50,
-  },
-  {
-      id: 8,
-      name: "그룹1",
-      description: "그룹1 설명",
-      imageUrl: "",
-      createdAt: "2024-08-22T07:47:49.803Z",
-      isPublic: false,
-      badges: 3,
-      memories: 10,
-      likes: 50,
-  },
+    "currentPage": 1,
+    "totalPages": 5,
+    "totalItemCount": 50,
+    "data": [
+      {
+        "id": 1,
+        "nickname": "string",
+        "title": "string",
+        "imageUrl": "string",
+        "tags": [ "string", "string" ],
+        "location": "string",
+        "moment": "2024-02-21",
+        "isPublic": true,
+        "likeCount": 0,
+        "commentCount": 0,
+        "createdAt": "2024-02-22T07:47:49.803Z"
+      },
+      {
+        "id": 2,
+        "nickname": "string",
+        "title": "string",
+        "imageUrl": "string",
+        "tags": [ "string", "string" ],
+        "location": "string",
+        "moment": "2024-02-21",
+        "isPublic": true,
+        "likeCount": 0,
+        "commentCount": 0,
+        "createdAt": "2024-02-22T07:47:49.803Z"
+      }
+    ],
+  }
 ];
 
-const GroupListPage = () => {
+const GroupDetailPage = () => {
   const navigate = useNavigate();
   const [isPublic, setIsPublic] = useState(true); // 공개 상태
   const [groups, setGroups] = useState(group); // 서버에서 가져온 그룹 데이터 저장은 []
@@ -192,25 +150,22 @@ const GroupListPage = () => {
   //   fetchGroups(true);
   // }, [isPublic]);
 
+  // 빈 상태 화면
+  const renderEmptyState = () => (
+    <G.EmptyState>
+      <G.Icon src={emptyImg} alt="No Groups" />
+      <G.Message>"게시된 추억이 없습니다."</G.Message>
+      <G.SubMessage>"첫번째 추억을 올려보세요!"</G.SubMessage>
+      <G.CreateButton>추억 올리기</G.CreateButton>
+    </G.EmptyState>
+  );  
+
   // const convertImageUrl = (url) => {
   //   if (!url) return ""; // URL이 없는 경우 빈 문자열 반환
   //   if (url.startsWith("http")) return url; // 이미 절대경로면 그대로 사용
   //   return `${API_URL}${url}`; // 상대경로라면 절대경로로 변환
   // };
-
-  // 빈 상태 화면
-  const renderEmptyState = () => (
-    <G.EmptyState>
-      <G.Icon src={emptyImg} alt="No Groups" />
-      <G.Message>
-        {isPublic
-          ? "등록된 공개 그룹이 없습니다."
-          : "등록된 비공개 그룹이 없습니다."}
-      </G.Message>
-      <G.SubMessage>"가장 먼저 그룹을 만들어보세요!"</G.SubMessage>
-      <G.CreateButton>그룹 만들기</G.CreateButton>
-    </G.EmptyState>
-  );  
+  
 
   return (
     <G.Container>
@@ -232,10 +187,12 @@ const GroupListPage = () => {
             return (
               <G.CardWrapper
                 key={group.id}
-                onClick={() => { 
-                  navigate(group.isPublic ? `/groups/${group.id}` : `/groups/${group.id}/verify-password`)
+                onClick={() => {
+                  if (!group.isPublic) {
+                    navigate(`/groups/${group.id}/verify-password`); // 비공개 그룹 클릭 시 이동
                   }
                 }
+              }
               >
                 <Card
                   groupData={group
@@ -257,4 +214,4 @@ const GroupListPage = () => {
   );
 };
 
-export default GroupListPage;
+export default GroupDetailPage;

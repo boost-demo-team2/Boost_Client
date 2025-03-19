@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import * as S from "../group/styled";
+import * as S from "../group/styles/styled";
 import * as G from "./styles/GroupEditModalStyle";
 import exitIcon from "../../assets/exitIcon.svg"
 
-export default function GroupEditModal () {
+export default function GroupEditModal ( setModalOpen ) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [isPublic, setIsPublic] = useState(true);
@@ -12,62 +12,62 @@ export default function GroupEditModal () {
   const [password,setPassword] = useState("");
   const {groupId} = useParams();
 
-  const handleImg = async (e) => { // 이미지 업로드 요청 함수
-    const file = e.target.files[0];
-    if(!file) return;
+  // const handleImg = async (e) => { // 이미지 업로드 요청 함수
+  //   const file = e.target.files[0];
+  //   if(!file) return;
 
-    const formData = new FormData();
-    formData.append("image", file);
+  //   const formData = new FormData();
+  //   formData.append("image", file);
 
-    try{
-      const response = await fetch("",{
-        method: "POST",
-        body: formData,
-      });
-      const imgData = await response.json();
-      if (!response.ok) throw new Error(imgData.message || "이미지 업로드 실패");
-      setImageUrl(data.imageUrl);
+  //   try{
+  //     const response = await fetch("",{
+  //       method: "POST",
+  //       body: formData,
+  //     });
+  //     const imgData = await response.json();
+  //     if (!response.ok) throw new Error(imgData.message || "이미지 업로드 실패");
+  //     setImageUrl(data.imageUrl);
 
-    } catch(error){
-      console.log("이미지 업로드 실패 :", error);
-      alert("이미지 업로드에 실패했습니다.");
-    }
-  } 
+  //   } catch(error){
+  //     console.log("이미지 업로드 실패 :", error);
+  //     alert("이미지 업로드에 실패했습니다.");
+  //   }
+  // } 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault(); 
   
-    try {
-      const response = await fetch("", {
-        method: "PUT",
-        body: JSON.stringify({
-          name,
-          password,
-          imageUrl,
-          isPublic,
-          introduction,
-        }),
-      });
-      const data = await response.json();
-      console.log(data);  
+  //   try {
+  //     const response = await fetch("", {
+  //       method: "PUT",
+  //       body: JSON.stringify({
+  //         name,
+  //         password,
+  //         imageUrl,
+  //         isPublic,
+  //         introduction,
+  //       }),
+  //     });
+  //     const data = await response.json();
+  //     console.log(data);  
 
-      if (!response.ok) {
-        alert(`${data.message}`);
+  //     if (!response.ok) {
+  //       alert(`${data.message}`);
 
-      }else{
-        console.log("업데이트 완료:", data);
-        alert("그룹이 수정되었습니다.");
-        setName("");
-        setPassword("");
-        setImageUrl("");
-        setIsPublic("");
-        setIntroduction("");
-        setModalOpen(false);
-      }
-    } catch (error) {
-      console.error("오류 발생:", error);
-    }
-  };
+  //     }else{
+  //       console.log("업데이트 완료:", data);
+  //       alert("그룹이 수정되었습니다.");
+  //       setName("");
+  //       setPassword("");
+  //       setImageUrl("");
+  //       setIsPublic("");
+  //       setIntroduction("");
+  //       setModalOpen(false);
+  //     }
+  //   } catch (error) {
+  //     console.error("오류 발생:", error);
+  //   }
+  // };
   
   return (
     <>

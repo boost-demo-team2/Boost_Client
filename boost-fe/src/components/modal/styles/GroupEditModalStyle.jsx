@@ -63,7 +63,7 @@ export const ImgInput = styled.input`
 export const ImgLabel = styled.label`
   padding: 13px 17px;
   border-radius: 6px;
-  border: 1px solid #282828
+  border: 1px solid #282828;
   `
 export const GroupContentText = styled.input`
   box-sizing: border-box;

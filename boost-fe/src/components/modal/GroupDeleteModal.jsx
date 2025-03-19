@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import * as S from "../group/styled"
+import * as S from "../group/styles/styled"
 import * as G from "./styles/DeleteModalStyle"
 import exitIcon from "../../assets/exitIcon.svg"
 
