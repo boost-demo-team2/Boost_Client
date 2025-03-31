@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import * as S from "../components/group/styled";
-import * as G from "../components/group/MakeGroupStyle";
-import BasicHeader from "../components/common/BasicHeader";
+import * as S from "../../components/group/styles/styled";
+import * as G from "../../components/group/styles/MakeGroupStyle";
+import BasicHeader from "../../components/common/BasicHeader";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"; // ✅ API URL 환경변수 설정
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"; // API URL 환경변수 설정
 
 export default function MakeGroup() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export default function MakeGroup() {
     console.log("🔄 변경된 imageUrl 상태:", imageUrl);
   }, [imageUrl]);
 
-  // ✅ 이미지 업로드 요청 함수 (수정)
+  // 이미지 업로드 요청 함수
   const handleImg = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -43,7 +43,10 @@ export default function MakeGroup() {
 
       let imgData;
       try {
-        imgData = JSON.parse(responseText);
+        const imgData = JSON.parse(responseText); // JSON 파싱 시도
+        if (!response.ok)
+          throw new Error(imgData.message || "이미지 업로드 실패");
+        setImageUrl(imgData.imageUrl);
       } catch (parseError) {
         console.error("❌ JSON 파싱 오류:", parseError);
         alert("서버 응답이 올바른 JSON 형식이 아닙니다.");
@@ -66,7 +69,7 @@ export default function MakeGroup() {
     }
   };
 
-  // ✅ 그룹 생성 요청 함수
+  // 그룹 생성 요청 함수
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("✅ handleSubmit 실행됨"); //콘솔창 출력 X 문제제

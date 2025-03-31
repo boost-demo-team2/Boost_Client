@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import * as G from "../components/modal/PostEditModal";
+import * as G from "../../components/post/MakePostStyle";
 
 export default function MakePost () {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export default function MakePost () {
   const [location, setLocation] = useState("");
   const [moment, setMoment] = useState("");
   const [isPublic, setIsPublic] = useState(true);
-  //const {postId} = useParams();
+  const {postId} = useParams();
 
   const handleKeyDown = (e) => {
     if(e.key != "Enter") return; //엔터키 아닐 경우 바로 리턴
@@ -24,63 +24,60 @@ export default function MakePost () {
     setTags([...tags, value]);
     e.target.value = "";
   }
+
   const removeTag = (tagIndex) => { 
     setTags(tags.filter((tag,index) => index !== tagIndex));
   }
-  const handleImg = async (e) => { // 이미지 업로드 요청 함수
+
+  // const handleImg = async (e) => {
+  //   const file = e.target.files[0];
+  //   if(!file) return;
+
+  //   const formData = new FormData();
+  //   formData.append("image", file);
+
+  //   try{
+  //     const response = await fetch("/api/image",{
+  //       method: "POST",
+  //       body: formData, // 자동으로 Content Type 설정
+  //     });
+  //     const imgData = await response.json();
+  //     if (!response.ok) throw new Error(imgData.message || "이미지 업로드 실패");
+  //     setImageUrl(imgData.imageUrl);
+
+  //   } catch(error){
+  //     console.log("이미지 업로드 실패 :", error);
+  //     alert("이미지 업로드에 실패했습니다.");
+  //   }
+
+  //mock data 기반
+  const handleImg = (e) => {
     const file = e.target.files[0];
-    if(!file) return;
-
-    setImageUrl(file.name);
-
-    /*const formData = new FormData();
-    formData.append("image", file);
-
-    try{
-      const response = await fetch("/api/image",{
-        method: "POST",
-        body: formData, // 자동으로 Content Type 설정
-      });
-      const imgData = await response.json();
-      if (!response.ok) throw new Error(imgData.message || "이미지 업로드 실패");
-      setImageUrl(imgData.imageUrl);
-
-    } catch(error){
-      console.log("이미지 업로드 실패 :", error);
-      alert("이미지 업로드에 실패했습니다.");
-    }*/
-  } 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); 
-
-    console.log("게시물 데이터:", {
-      nickname,
-      title,
-      content,
-      postPassword,
-      imageUrl,
-      tags,
-      location,
-      moment,
-      isPublic,
-    });
-  
-    console.log("게시물 데이터:", formData);
-    alert("게시물이 생성되었습니다. (백엔드 없이 실행)");
-  
-    // 입력 필드 초기화
-    setNickname("");
-    setTitle("");
-    setContent("");
-    setPostPassword("");
-    setImageUrl("");
-    setTags([]);
-    setLocation("");
-    setMoment("");
-    setIsPublic(true);
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setImageUrl(url);
   };
-    
-    /*const formData = {
+
+  const handleSubmit = () => {
+    console.log("Mock submission data:", formData);
+    setTimeout(() => {
+      alert("추억 올리기가 완료되었습니다. (Mock)");
+      // 폼 초기화
+      setNickname("");
+      setTitle("");
+      setContent("");
+      setPostPassword("");
+      setImageUrl("");
+      setTags([]);
+      setLocation("");
+      setMoment("");
+      setIsPublic(true);
+      navigate(-1);
+    }, 500);
+
+
+  } 
+    const formData = {
       nickname,
       title,
       content,
@@ -92,42 +89,44 @@ export default function MakePost () {
       isPublic,
     }
 
-    try {
-      const response = await fetch(`/api/groups/${postId}/posts`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
-      console.log(data);  
+  //   try {
+  //     const response = fetch(`/api/groups/${postId}/posts`, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     const data = response.json();
+  //     console.log(data);  
 
-      if (!response.ok) {
-        alert(`${data.message}`);
-        navigate(-1);
-      }else{
-        console.log("업데이트 완료:", data);
-        setNickname("");
-        setTitle("");
-        setContent("");
-        setPostPassword("");
-        setImageUrl("");
-        setTags([]);
-        setLocation("");
-        setMoment(null);
-        setIsPublic(true);
-        alert("추억 올리기가 완료되었습니다.");
-        navigate(-1);
+  //     if (!response.ok) {
+  //       alert(`${data.message}`);
+  //       navigate(-1);
+  //     }else{
+  //       console.log("업데이트 완료:", data);
+  //       setNickname("");
+  //       setTitle("");
+  //       setContent("");
+  //       setPostPassword("");
+  //       setImageUrl("");
+  //       setTags([]);
+  //       setLocation("");
+  //       setMoment(null);
+  //       setIsPublic(true);
+  //       alert("추억 올리기가 완료되었습니다.");
+  //       navigate(-1);
         
-      }
-    } catch (error) {
-      console.error("오류 발생:", error);
-    }*/
+  //     }
+  //   } catch (error) {
+  //     console.error("오류 발생:", error);
+  // }
   
   return (
     <>
-          <G.MainTitle>추억 수정</G.MainTitle>
+      <G.Wrapper>
+        <G.Container>
+          <G.MainTitle>추억 올리기</G.MainTitle>
           <G.FlexBox>
           <div>
             <G.Title>닉네임</G.Title>
@@ -168,11 +167,13 @@ export default function MakePost () {
             <G.Title>추억 공개 선택</G.Title>
             <G.ToggleLabel>공개</G.ToggleLabel>
             <G.ToggleSwitch type="checkbox" checked={isPublic} onChange={() => setIsPublic(!isPublic)} />
-            <G.Title>수정 권한 인증</G.Title>
+            <G.Title>비밀번호 생성</G.Title>
             <G.PasswordInput value={postPassword} onChange={(e) => setPostPassword(e.target.value)} />
           </div>
           </G.FlexBox>
           <G.SubmitButton onClick={handleSubmit}>수정하기</G.SubmitButton>
+        </G.Container>
+      </G.Wrapper>
   </>
   )
 }

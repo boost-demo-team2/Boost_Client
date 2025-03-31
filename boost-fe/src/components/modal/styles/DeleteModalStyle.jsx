@@ -39,7 +39,7 @@ export const Text = styled.div`
   padding-bottom: 10px;
 
 `
-export const PasswordInput = style.input`
+export const PasswordInput = styled.input`
 width: 400px;
 height: 45px;
 border-radius: 6px;
@@ -47,7 +47,6 @@ border: 1px solid #DDDDDD;
 margin-bottom: 60px;
 `
 const ModalCloseButton = styled.img`
-      display: position;
       position: absolute;
       width:30px;
       height:30px;

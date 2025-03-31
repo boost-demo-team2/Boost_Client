@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import * as C from "./CardStyle";
+import * as C from "./styles/CardStyle";
 import flowerIcon from "../../assets/flower.svg";
 import defaultImg from "../../assets/img1.png";
 
-const Card = ({ groupData }) => {
+const GroupCard = ({ groupData }) => {
   if (!groupData) return null; // groupData가 없을 경우 렌더링 방지
 
   return (
@@ -59,7 +59,7 @@ const Card = ({ groupData }) => {
   );
 };
 
-Card.propTypes = {
+GroupCard.propTypes = {
   groupData: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
@@ -73,4 +73,4 @@ Card.propTypes = {
   }),
 };
 
-export default Card;
+export default GroupCard;

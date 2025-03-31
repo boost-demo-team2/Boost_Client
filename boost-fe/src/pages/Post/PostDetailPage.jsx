@@ -64,8 +64,8 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import * as S from "../components/group/PostDetailStyle";
-import BasicHeader from "../components/common/BasicHeader";
+import * as S from "../../components/post/PostDetailStyle";
+import BasicHeader from "../../components/common/BasicHeader";
 
 const PostDetailPage = () => {
   const { postId } = useParams(); // URL에서 postId 가져오기

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import search from "../../assets/search.svg";
 import * as S from "./Styled";
 
-const Search = ({ setIsPublic, isPublic, setSortOrder }) => {
-  const [keyword, setKeyword] = useState("");
-
-  const handleKeywordChange = (e) => setKeyword(e.target.value);
+const Search = ({ setIsPublic, isPublic, setSortOrder, onSearch, keyword, placeholder}) => {
+  const handleKeywordChange = (e) => {
+    onSearch(e.target.value);
+  };
 
   const handleKeyword = (e) => {
     if (e.key === "Enter") {
@@ -17,25 +17,27 @@ const Search = ({ setIsPublic, isPublic, setSortOrder }) => {
     setSortOrder(e.target.value); // 정렬 기준 전달
   };
 
+  const handleToggle = (status) => {
+    setIsPublic(status); // 클릭 시 공개/비공개 상태 변경
+  };
+
   return (
     <S.ButtonContainer>
-      <S.ToggleButton $active={isPublic} onClick={() => setIsPublic(true)}>
+      <S.ToggleButton $active={isPublic} onClick={() => handleToggle(true)}>
         공개
       </S.ToggleButton>
-      <S.ToggleButton $active={!isPublic} onClick={() => setIsPublic(false)}>
+      <S.ToggleButton $active={!isPublic} onClick={() => handleToggle(false)}>
         비공개
       </S.ToggleButton>
-
       <S.SearchContainer>
         <S.SearchBar
           value={keyword}
           onChange={handleKeywordChange}
-          placeholder="검색어를 입력하세요"
+          placeholder={placeholder}
           onKeyUp={handleKeyword}
         />
         <S.Icon src={search} alt="검색" />
       </S.SearchContainer>
-
       <S.Dropdown onChange={handleSortChange}>
         <option value="latest">최신순</option>
         <option value="comments">댓글순</option>
