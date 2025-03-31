@@ -4,8 +4,7 @@ import GroupListPage from "./pages/group/GroupListPage";
 import MakeGroup from './pages/group/MakeGroup';
 import GroupAccess from './pages/group/GroupAccess';
 import GroupDetailPage from './pages/group/GroupDetailPage';
-import GroupInfo from './components/common/GroupInfo';
-// import Detailpage  from './pages/Detailpage';
+import MakePost from './pages/Post/MakePost';
 // import Notfound from './pages/Notfound.jsx';
 // import PostAccess from './pages/PostAccess.jsx';
 // import MakePost from './pages/MakePost.jsx';
@@ -16,8 +15,8 @@ const router = createBrowserRouter([
   { path : "/groups", element: <MakeGroup/>},
   { path : "/groups/:groupId/verify-password", element: <GroupAccess/>},
   { path : "/groups/:groupId", element: <GroupDetailPage/>},
-  /*{ path : "/detail", element: <Detailpage/>},
-  { path : "/groups/:groupId/verify-password", element: <GroupAccess/>},
+  { path : "groups/:groupId/posts", element: <MakePost />},
+  /*{ path : "/groups/:groupId/verify-password", element: <GroupAccess/>},
   { path : "/groups/:groupId/posts", element: <MakePost/>},
   { path : "/posts/:postId/verify-password", element: <PostAccess/>},
   { path : "/notfound", element: <Notfound/>},
