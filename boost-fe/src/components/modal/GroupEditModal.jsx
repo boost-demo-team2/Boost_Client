@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import * as G from "./GroupEditModalStyle";
+import * as G from "./styles/GroupEditModalStyle";
 
 export default function GroupEditModal ({setEditModalOpen}) {
    const [name, setName] = useState("");

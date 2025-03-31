@@ -32,14 +32,14 @@ export const GroupImage = styled.img`
 `;
 
 export const CardContent = styled.div`
-  padding: 16px;
+  padding: 0px 16px;
 `;
 
 export const MetaInfo = styled.div`
   display: flex;
   font-size: 14px;
   color: #282828;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 `;
 
 export const Bar = styled.div`
@@ -74,6 +74,7 @@ export const Stats = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
+  padding-bottom: 16px;
 `;
 
 export const StatItem = styled.div`
@@ -82,7 +83,7 @@ export const StatItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5px;
+  gap: 2px;
 
   img {
     width: 16px;
@@ -95,3 +96,42 @@ export const StatItem = styled.div`
 
   }
 `;
+export const Tag = styled.div`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: -3%;
+  color: #B8B8B8;
+`
+export const TagItem = styled.div`
+  display: flex;
+  gap: 3px 10px;
+  flex-wrap: wrap;
+`
+export const BottomContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+export const BottomWrapper = styled.div`
+  display: flex;
+  padding: 20px 0px 15px 0px;
+  gap: 4px;
+`
+export const BottomContent = styled.div`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: -3%;
+`
+export const Icon = styled.img`
+  width: 18px;
+  height: 18px;
+  padding: 0 0 0 10px ;
+`
+export const IconText = styled.div`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: -3%;
+  color: #8D8D8D;
+`

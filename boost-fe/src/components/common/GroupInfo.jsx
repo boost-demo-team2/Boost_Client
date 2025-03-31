@@ -1,6 +1,6 @@
 import { useState } from "react";
-import GroupEditModal from "./GroupEditModal";
-import GroupDeleteModal from "./GroupDeleteModal";
+import GroupEditModal from "../modal/GroupEditModal";
+import GroupDeleteModal from "../modal/GroupDeleteModal";
 import * as G from "./GroupInfoStyle";
 import flower from "../../assets/flower.svg";
 

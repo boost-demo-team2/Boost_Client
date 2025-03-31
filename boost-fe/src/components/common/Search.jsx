@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import search from "../../assets/search.svg";
 import * as S from "./Styled";
 
-const Search = ({ setIsPublic, isPublic, setSortOrder, onSearch, keyword }) => {
-
+const Search = ({ setIsPublic, isPublic, setSortOrder, onSearch, keyword, placeholder}) => {
   const handleKeywordChange = (e) => {
     onSearch(e.target.value);
   };
@@ -34,7 +33,7 @@ const Search = ({ setIsPublic, isPublic, setSortOrder, onSearch, keyword }) => {
         <S.SearchBar
           value={keyword}
           onChange={handleKeywordChange}
-          placeholder="검색어를 입력하세요"
+          placeholder={placeholder}
           onKeyUp={handleKeyword}
         />
         <S.Icon src={search} alt="검색" />

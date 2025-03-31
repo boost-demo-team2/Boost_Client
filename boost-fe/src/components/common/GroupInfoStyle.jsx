@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const InfoWrapper = styled.div`
   display: flex;
   justify-content: center;
-  gap: 60px;
   width: 100%;
   max-width: 1560px;
 `

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/common/Header";
 import Search from "../../components/common/Search";
-import Card from "../../components/group/Card";
+import GroupCard from "../../components/group/GroupCard";
 import * as G from "../../components/group/styles/GroupStyle";
 import emptyImg from "../../assets/empty.svg";
 import MoreButton from "../../components/common/Button";
@@ -47,7 +47,7 @@ const group = [
       description: "그룹4 설명",
       imageUrl: "",
       createdAt: "2024-03-22T07:47:49.803Z",
-      isPublic: false,
+      isPublic: true,
       badges: 3,
       memories: 10,
       likes: 50,
@@ -91,7 +91,7 @@ const group = [
       description: "그룹1 설명",
       imageUrl: "",
       createdAt: "2024-08-22T07:47:49.803Z",
-      isPublic: false,
+      isPublic: true,
       badges: 3,
       memories: 10,
       likes: 50,
@@ -221,6 +221,7 @@ const GroupListPage = () => {
         setIsPublic={setIsPublic}
         isPublic={isPublic}
         setSortOrder={setSortOrder}
+        placeholder="그룹명을 입력하세요."
       />
       {sortedGroups.length === 0 ? (
         renderEmptyState()
@@ -237,7 +238,7 @@ const GroupListPage = () => {
                   }
                 }
               >
-                <Card
+                <GroupCard
                   groupData={group
                     // ...group,
                     // imageUrl: fullImageUrl,

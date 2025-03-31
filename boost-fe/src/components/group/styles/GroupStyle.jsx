@@ -69,3 +69,38 @@ export const GroupList = styled.div`
   gap: 20px;
   margin: 50px 0;
 `;
+
+export const InfoWrapper = styled.div`
+position: static;  
+top: 30px;
+margin-bottom: 120px;
+padding-bottom: 120px;
+border-bottom: 1px solid #DDDDDD;
+`
+export const Title = styled.div`
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: -3%;
+  color: #282828;
+`
+export const Button = styled.button`
+    position: absolute;
+    width: 200px;
+    height: 45px;
+    font-size : 16px;
+    text-align: center;
+    background-color: #282828;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    top: 55px;
+    right: 1px;
+`
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 60px;
+`
